@@ -1,0 +1,118 @@
+/*create table Department(
+id number,
+name varchar(100),
+constraint dep_id_pk primary key(id)  
+);*/
+
+/*create table Employee(
+id number not null,
+department_id number,
+chief_id number not null,
+name varchar2(100),
+salary number,
+constraint emp_id_pk primary key(id),
+constraint dep_id_fk foreign key(department_id)
+references Department(id)
+);*/
+
+/*insert into Department(id, name) values(101010, 'IT Department');
+insert into Department(id, name) values(202020, 'Business Department');*/
+
+/*insert into Employee(id, department_id, chief_id, name, salary) values(2, 101010, 11, 'Nur', 100000000);*/
+/*insert into Employee(id, department_id, chief_id, name, salary) values(3, 101010, 11, 'HZ', 10000);*/
+
+/*update employee 
+set name = 'Nurz', salary = 123456
+where id = 2;*/
+
+/*delete from employee where id = 3;*/
+
+--select * from employee;
+/*select distinct item from orders
+--limit 2
+;*/
+
+/*select * from orders
+where amount > 350;*/
+
+/*select * from orders o
+where o.amount>350 or o.order_id=2;*/
+
+/*insert into Employee(id, department_id, chief_id, name, salary) values(3, 101010, 11, 'ABC', null);*/
+/*select * from employee e
+order by salary desc;*/
+--limit 1;
+--where e.salary is null;
+
+
+/*select * from orders o
+where o.amount>350 and not o.order_id=3;*/
+
+/*insert into Employee(id, department_id, chief_id, name, salary) values(4, 202020, 12, 'ABqwertyC', 5055050);
+insert into Employee(id, department_id, chief_id, name, salary) values(5, 202020, 12, 'qwerty', 1235059);*/
+
+--select sum(salary), avg(salary), count(salary) from employee e
+
+
+/*select department_id, sum(salary), avg(salary), count(salary) from employee e
+where salary>=1000000
+group by department_id
+;*/
+
+/*select department_id, sum(salary), avg(salary), count(salary) from employee e
+where salary>=1000000
+group by department_id
+having sum(salary)>210000;*/
+
+/*select * from employee e
+where e.salary between 100000 and 2000000;*/
+
+/*select * from employee e
+where e.name like 'a';*/
+/*select * from employee e
+where e.name like '%a%';*/
+
+/*select * from employee e
+where e.salary  in (123456, 10000000000);*/
+
+/*select e.*,d.name from employee e
+inner join department d on e.department_id=d.id;*/
+
+
+--insert into department(id, name) values(3902020, 'Test Dep');
+/*select * from department d
+left join employee e on e.department_id = d.id;*/
+
+--select e.*, coalesce(e.salary, 10) from employee e 
+
+--insert into Employee(id, department_id, chief_id, name, salary) values(121, 101010, 11, 'GGG', 500);
+
+/*select e.*,e1.name from employee e
+left join employee e1 on e.chief_id=e1.id;*/
+
+/*select max(salary) from employee e
+where e.salary <> (select max(salary) from employee);*/
+
+--SELECT salary, GROUP_CONCAT(name, ', ') AS employees FROM employee GROUP BY salary HAVING COUNT(*) > 1;
+
+
+/*select * from employee e 
+join employee e1 on e.salary = e1.salary 
+where e.name<>e1.name;*/
+
+/*select salary, count(*) from employee
+group by salary
+having count(*)>1;*/
+
+/*select c.country, o.item, sum(o.amount) from customers c
+left join orders o on c.customer_id = o.customer_id
+left join shippings s on s.customer = c.customer_id
+group by c.country, o.item*/
+
+/*select o.item, sum(o.amount) from customers c
+left join orders o on c.customer_id = o.customer_id
+left join shippings s on s.customer = c.customer_id
+group by c.country, o.item*/
+
+SELECT Orders.item, Customers.country, Shippings.status FROM Orders JOIN Customers ON Orders.customer_id = Customers.customer_id JOIN Shippings ON Orders.order_id = Shippings.order_id WHERE Customers.country = 'USA';??
+
